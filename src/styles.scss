@@ -1,1 +1,20 @@
-/* You can add global styles to this file, and also import other style files */
+$font-family: 'Rubik', sans-serif;
+
+@mixin displayFlex($flex-direction, $justify-content, $align-items, $gap: 0, $wrap: wrap) {
+  display: flex;
+  flex-direction: $flex-direction;
+  justify-content: $justify-content;
+  align-items: $align-items;
+  gap: $gap;
+  wrap: $wrap
+}
+
+html {
+  font-size: 10px;
+}
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
