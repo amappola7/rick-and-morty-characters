@@ -5,17 +5,17 @@
   width: 100%;
   height: 100%;
 
-  .close-modal {
+  .close-modal-button {
     @include displayFlex(row, center, center);
     position: absolute;
     top: 1.5rem;
     left: 95vw;
-    width: 4rem;
-    height: 4rem;
+    width: 3rem;
+    height: 3rem;
     border: none;
-    border-radius: 2rem;
+    border-radius: 0.3rem;
     font-family: $font-family;
-    font-size: 2rem;
+    font-size: 1.6rem;
     font-weight: 600;
     color: black;
     background-color: $yellow;
@@ -63,7 +63,7 @@
       }
 
       .character-details__name {
-        font-size: 1.8rem;
+        font-size: 2rem;
         font-weight: 600;
         text-align: center;
         color: $blue;
