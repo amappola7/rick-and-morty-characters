@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { CharacterService } from './services/character.service';
+import { ICharacter } from './interfaces/icharacter';
 
 @Component({
   selector: 'app-root',
@@ -6,5 +8,17 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  title = 'rick-and-morty';
+  charactersList!: ICharacter[];
+
+  constructor(
+    private characterService: CharacterService
+  ) {}
+
+  ngOnInit() {
+    this.characterService.getCharacters(1)
+    .subscribe((list) => {
+      const {info, results} = list;
+      this.charactersList = results;
+    });
+  }
 }

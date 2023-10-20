@@ -8,13 +8,29 @@ main {
   overflow: hidden;
 
   .background-container {
-    width: 100%;
-    height: 100%;
-    z-index: -1;
+    width: 100vw;
+    height: 100vh;
 
     .background-image {
       width: 100%;
       height: 100%;
+    }
+  }
+
+  .characters-container {
+    @include displayFlex(row, center, center);
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    padding: 5rem;
+    z-index: 1;
+    overflow: hidden;
+
+    .characters-grid {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
     }
   }
 }

@@ -2,4 +2,9 @@
   <div class="background-container">
     <img class="background-image" src="../assets/background.jpg">
   </div>
+  <section class="characters-container">
+    <div class="characters-grid">
+      <app-card *ngFor="let character of charactersList" [characterInfo]="character"></app-card>
+    </div>
+  </section>
 </main>
