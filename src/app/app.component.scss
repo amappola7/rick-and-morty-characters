@@ -37,5 +37,35 @@ main {
       grid-template-columns: repeat(5, 1fr);
       gap: 3rem;
     }
+
+    .slider-container {
+      @include displayFlex(row, center, center, 2rem);
+      width: 100%;
+
+      .slider {
+        width: 95%;
+        height: 0.4rem;
+        background-color: $yellow;
+        -webkit-appearance: none;
+      }
+
+      .slider::-webkit-slider-thumb {
+        width: 1.6rem;
+        height: 1.6rem;
+        border: 0;
+        border-radius: 0.2rem;
+        background-color: $blue;
+        cursor: pointer;
+        -webkit-appearance: none;
+      }
+
+      p  {
+        font-family: $font-family;
+        font-size: 2rem;
+        font-weight: 600;
+        color: white;
+      }
+    }
+
   }
 }
