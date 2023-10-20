@@ -1,5 +1,7 @@
 <div class="character-card">
   <img [src]="characterInfo.image" [alt]="characterInfo.name" [title]="characterInfo.name">
-  <p>Name: {{characterInfo.name}}</p>
-  <p>Specie: {{characterInfo.species}}</p>
+  <div class="character-info">
+    <p class="character-info__name">{{characterInfo.name}}</p>
+    <p class="character-info__specie">{{characterInfo.species}}</p>
+  </div>
 </div>
