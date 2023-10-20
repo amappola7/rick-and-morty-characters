@@ -13,6 +13,8 @@ export class AppComponent {
   charactersList!: ICharacter[];
   speciesList: string[] = [];
   pages: number = 42;
+  filterType: string = '';
+  filter: string = '';
   paginator: FormControl  = new FormControl(1);
   speciesFilter: FormControl  = new FormControl('');
   searchInput: FormControl  = new FormControl('');
@@ -60,10 +62,12 @@ export class AppComponent {
   }
 
   onPaginatorChange() {
-    this.getCharacters(this.paginator.value);
+    this.getFilteredCharacters(this.filterType, this.filter);
   }
 
   onFilterChange(filterType: string, filter: string): void {
     this.getFilteredCharacters(filterType, filter);
+    this.filterType = filterType;
+    this.filter = filter;
   }
 }
