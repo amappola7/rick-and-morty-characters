@@ -1,18 +1,69 @@
 <main>
   <div class="background-container">
-    <img class="background-image" src="../assets/background.jpg">
+    <img class="background-image" src="../assets/background.jpg" />
   </div>
   <section class="characters-container" *ngIf="!showDetailsModal">
-    <img src="../assets/logo.webp">
+    <div class="logo-and-filters-container">
+      <img src="../assets/logo.webp" />
+      <div class="inputs">
+        <div class="input-container search-input-container">
+          <label for="search-input"
+            ><fa-icon [icon]="icons.search"></fa-icon
+          ></label>
+          <input
+            type="text"
+            id="search-input"
+            [formControl]="searchInput"
+            (change)="onFilterChange('name', searchInput.value)"
+          />
+        </div>
+        <div class="input-container filter-input-container">
+          <label for="species-filter"
+            ><fa-icon [icon]="icons.filter"></fa-icon
+          ></label>
+          <select
+          class="species-filter"
+            id="species-filter"
+            [formControl]="speciesFilter"
+            (change)="onFilterChange('species', speciesFilter.value)"
+          >
+            <option class="select-option" value="">-- Species --</option>
+            <option
+              class="select-option"
+              *ngFor="let specie of speciesList"
+              [value]="specie"
+            >
+              {{ specie }}
+            </option>
+          </select>
+        </div>
+      </div>
+    </div>
     <div class="characters-grid">
-      <app-card *ngFor="let character of charactersList" [characterInfo]="character" (click)="onShowDetails(character.id)"></app-card>
+      <app-card
+        *ngFor="let character of charactersList"
+        [characterInfo]="character"
+        (click)="onShowDetails(character.id)"
+      ></app-card>
     </div>
     <div class="slider-container">
-      <input class="slider" type="range" min="1" max="42" value="1" step="1" [formControl]="paginator" (change)="onPaginatorChange()">
-      <p>{{paginator.value}}</p>
+      <input
+        class="slider"
+        type="range"
+        min="1"
+        max="{{ pages }}"
+        value="1"
+        step="1"
+        [formControl]="paginator"
+        (change)="onPaginatorChange()"
+      />
+      <p>{{ paginator.value }}</p>
     </div>
   </section>
   <section class="character-details-container" *ngIf="showDetailsModal">
-    <app-details [characterID]="currentCharacterId" (closeDetailsModal)="onHideDetails()"></app-details>
+    <app-details
+      [characterID]="currentCharacterId"
+      (closeDetailsModal)="onHideDetails()"
+    ></app-details>
   </section>
 </main>

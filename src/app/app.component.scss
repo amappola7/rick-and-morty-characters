@@ -1,4 +1,4 @@
-@import '../styles.scss';
+@import "../styles.scss";
 
 main {
   width: 100vw;
@@ -28,8 +28,46 @@ main {
     z-index: 1;
     overflow: hidden;
 
-    img {
-      width: 30rem;
+    .logo-and-filters-container {
+      width: 100%;
+      @include displayFlex(row, space-between, center);
+
+      img {
+        width: 30rem;
+      }
+
+      .inputs {
+        @include displayFlex(row, center, center, 2.5rem);
+
+        .input-container {
+          @include displayFlex(row, center, center, 1rem);
+          width: 25rem;
+          height: 5rem;
+
+          label {
+            font-size: 1.8rem;
+            color: $blue;
+          }
+
+          input,
+          select {
+            height: 3rem;
+            width: 28rem;
+            padding: 0 1rem;
+            border: solid 0.1rem rgba($color: #ffffff, $alpha: 0.5);
+            border-radius: 0.4rem;
+            font-family: $font-family;
+            font-size: 1.5rem;
+            font-weight: 200;
+            color: white;
+            background-color: rgba($color: #000000, $alpha: 0.2);
+          }
+
+          .select-option {
+            background-color: rgba($color: $dark-blue, $alpha: 1);
+          }
+        }
+      }
     }
 
     .characters-grid {
@@ -59,14 +97,13 @@ main {
         -webkit-appearance: none;
       }
 
-      p  {
+      p {
         font-family: $font-family;
         font-size: 2rem;
         font-weight: 600;
         color: white;
       }
     }
-
   }
 
   .character-details-container {

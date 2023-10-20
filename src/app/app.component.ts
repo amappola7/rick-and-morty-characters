@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { CharacterService } from './services/character.service';
 import { ICharacter } from './interfaces/icharacter';
 import { FormControl } from '@angular/forms';
+import { faFilter, faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-root',
@@ -10,9 +11,17 @@ import { FormControl } from '@angular/forms';
 })
 export class AppComponent {
   charactersList!: ICharacter[];
+  speciesList: string[] = [];
+  pages: number = 42;
   paginator: FormControl  = new FormControl(1);
+  speciesFilter: FormControl  = new FormControl('');
+  searchInput: FormControl  = new FormControl('');
   showDetailsModal: boolean = false;
   currentCharacterId!: number;
+  icons = {
+    search: faMagnifyingGlass,
+    filter: faFilter
+  };
 
   constructor(
     private characterService: CharacterService
@@ -20,6 +29,7 @@ export class AppComponent {
 
   ngOnInit() {
     this.getCharacters(1);
+    this.speciesList = this.characterService.getSpecies();
   }
 
   getCharacters(page: number): void {
@@ -27,6 +37,16 @@ export class AppComponent {
     .subscribe((list) => {
       const {info, results} = list;
       this.charactersList = results;
+      this.pages = info.pages;
+    });
+  }
+
+  getFilteredCharacters(filterType: string, filter: string): void {
+    this.characterService.getFilteredCharacters(this.paginator.value, filterType, filter)
+    .subscribe((list) => {
+      const {info, results} = list;
+      this.charactersList = results;
+      this.pages = info.pages;
     });
   }
 
@@ -41,5 +61,9 @@ export class AppComponent {
 
   onPaginatorChange() {
     this.getCharacters(this.paginator.value);
+  }
+
+  onFilterChange(filterType: string, filter: string): void {
+    this.getFilteredCharacters(filterType, filter);
   }
 }
