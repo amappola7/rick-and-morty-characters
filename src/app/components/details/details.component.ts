@@ -1,6 +1,7 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { ICharacter } from 'src/app/interfaces/icharacter';
 import { CharacterService } from 'src/app/services/character.service';
+import { faXmark } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-details',
@@ -8,6 +9,7 @@ import { CharacterService } from 'src/app/services/character.service';
   styleUrls: ['./details.component.scss']
 })
 export class DetailsComponent {
+  closeIcon = faXmark;
   character!: ICharacter;
   @Input() characterID!: number;
   @Output() closeDetailsModal: EventEmitter<boolean> = new EventEmitter(false);
