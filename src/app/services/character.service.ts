@@ -12,15 +12,11 @@ export class CharacterService {
     private http: HttpClient
   ) { }
 
-  getCharacters(): Observable<{}> {
-    return this.http.get(this._url);
+  getCharacters(page: number): Observable<any> {
+    return this.http.get(`${this._url}?page=${page}`)
   }
 
-  getCharactersPaginated(page: number): Observable<{}> {
-    return this.http.get(`${this._url}?page=${page}`);
-  }
-
-  getCharacterById(id: number): Observable<{}> {
+  getCharacterById(id: number): Observable<any> {
     return this.http.get(`${this._url}/${id}`);
   }
 }
