@@ -2,14 +2,17 @@
   <div class="background-container">
     <img class="background-image" src="../assets/background.jpg">
   </div>
-  <section class="characters-container">
+  <section class="characters-container" *ngIf="!showDetailsModal">
     <img src="../assets/logo.webp">
     <div class="characters-grid">
-      <app-card *ngFor="let character of charactersList" [characterInfo]="character"></app-card>
+      <app-card *ngFor="let character of charactersList" [characterInfo]="character" (click)="onShowDetails(character.id)"></app-card>
     </div>
     <div class="slider-container">
       <input class="slider" type="range" min="1" max="42" value="1" step="1" [formControl]="paginator" (change)="onPaginatorChange()">
       <p>{{paginator.value}}</p>
     </div>
+  </section>
+  <section class="character-details-container" *ngIf="showDetailsModal">
+    <app-details [characterID]="currentCharacterId" (closeDetailsModal)="onHideDetails()"></app-details>
   </section>
 </main>

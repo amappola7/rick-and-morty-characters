@@ -1,0 +1,15 @@
+<div class="character-details__container">
+  <button class="close-modal" (click)="onCloseDetailsModal()">x</button>
+  <img class="background" src="../../../assets/portal.png">
+  <div class="character-details__content">
+    <img [src]="character.image" [alt]="character.name" [title]="character.name">
+    <span class="character-details__info">
+      <p class="character-details__name">{{character.name}}</p>
+      <p><span>Specie: </span>{{character.species}}</p>
+      <p><span>Gender: </span>{{character.gender}}</p>
+      <p><span>Status: </span>{{character.status}}</p>
+      <p><span>Origin: </span>{{character.origin.name}}</p>
+      <p><span>Location: </span>{{character.location.name}}</p>
+    </span>
+  </div>
+</div>

@@ -1,0 +1,73 @@
+@import '../../../styles.scss';
+
+.character-details__container {
+  @include displayFlex(row, center, center);
+  width: 100%;
+  height: 100%;
+
+  .close-modal {
+    @include displayFlex(row, center, center);
+    position: absolute;
+    top: 1.5rem;
+    left: 95vw;
+    width: 4rem;
+    height: 4rem;
+    border: none;
+    border-radius: 2rem;
+    font-family: $font-family;
+    font-size: 2rem;
+    font-weight: 600;
+    color: black;
+    background-color: $yellow;
+  }
+
+  .background {
+    position: absolute;
+    top: calc(100vh / 2 - 35rem);
+    left: calc(100vw / 2 - 35rem);
+    width: 70rem;
+    height: 70rem;
+  }
+
+  .character-details__content {
+    @include displayFlex(row, center, center);
+    width: 70rem;
+    height: 70rem;
+    z-index: 1;
+
+    img {
+      width: 20rem;
+      height: 20rem;
+      border: solid $dark-blue 0.2rem;
+      border-radius: 1rem 0 0 1rem;
+    }
+
+    .character-details__info {
+      @include displayFlex(column, center, center, 0.4rem);
+      width: 32rem;
+      height: 20rem;
+      border: solid $dark-blue 0.2rem;
+      border-radius: 0 1rem 1rem 0;
+      background-color: rgba($color: $dark-blue, $alpha: 0.95);;
+      font-family: $font-family;
+      font-size: 1.6rem;
+      color: white;
+
+      p {
+        width: 100%;
+        padding: 0 1.5rem;
+
+        span {
+          color: $yellow;
+        }
+      }
+
+      .character-details__name {
+        font-size: 1.8rem;
+        font-weight: 600;
+        text-align: center;
+        color: $blue;
+      }
+    }
+  }
+}

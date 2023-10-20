@@ -11,6 +11,8 @@ import { FormControl } from '@angular/forms';
 export class AppComponent {
   charactersList!: ICharacter[];
   paginator: FormControl  = new FormControl(1);
+  showDetailsModal: boolean = false;
+  currentCharacterId!: number;
 
   constructor(
     private characterService: CharacterService
@@ -26,6 +28,15 @@ export class AppComponent {
       const {info, results} = list;
       this.charactersList = results;
     });
+  }
+
+  onShowDetails(id: number): void {
+    this.showDetailsModal = !this.showDetailsModal;
+    this.currentCharacterId = id;
+  }
+
+  onHideDetails(): void {
+    this.showDetailsModal = false;
   }
 
   onPaginatorChange() {
