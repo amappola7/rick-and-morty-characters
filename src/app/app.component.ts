@@ -32,6 +32,7 @@ export class AppComponent {
   ngOnInit() {
     this.getCharacters(1);
     this.speciesList = this.characterService.getSpecies();
+    this.currentCharacterId = 1;
   }
 
   getCharacters(page: number): void {

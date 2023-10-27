@@ -2,7 +2,7 @@
   <div class="background-container">
     <img class="background-image" src="../assets/background.jpg" />
   </div>
-  <section class="characters-container" *ngIf="!showDetailsModal">
+  <section [ngClass]="showDetailsModal ? 'hide' : 'characters-container'">
     <div class="logo-and-filters-container">
       <img src="../assets/logo.webp" />
       <div class="inputs">
@@ -61,9 +61,11 @@
     </div>
   </section>
   <section class="character-details-container" *ngIf="showDetailsModal">
+  <!-- <section [ngClass]="!showDetailsModal ? 'hide' : 'characters-container'"> -->
     <app-details
       [characterID]="currentCharacterId"
       (closeDetailsModal)="onHideDetails()"
     ></app-details>
   </section>
 </main>
+
